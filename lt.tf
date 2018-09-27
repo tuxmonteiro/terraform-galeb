@@ -1,6 +1,20 @@
+data "aws_ami" "oficial" {
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+
+  filter {
+    name   = "tag:Name"
+    values = ["OracleLinux 7 OFICIAL ENA"]
+  }
+
+  most_recent = true
+}
+
 resource "aws_launch_template" "galeb_template" {
   name_prefix = "galeb_template"
-  image_id = "ami-0ad7b0031d41ed4b9"
+  image_id = "${data.aws_ami.oficial.id}"
   instance_type = "t2.micro"
   iam_instance_profile {
     arn = "arn:aws:iam::185565106143:instance-profile/allow-s3-apikeys-galeb"

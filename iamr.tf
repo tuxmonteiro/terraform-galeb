@@ -1,5 +1,5 @@
-resource "aws_iam_role" "allow-s3-apikeys-galeb" {
-    name               = "allow-s3-apikeys-galeb"
+resource "aws_iam_role" "role-allow-s3-apikeys-galeb" {
+    name               = "role-allow-s3-apikeys-galeb"
     path               = "/"
     assume_role_policy = <<POLICY
 {
